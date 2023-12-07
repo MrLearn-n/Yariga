@@ -40,8 +40,10 @@ import {
 import { Login } from "pages/login";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { parseJwt } from "utils/parse-jwt";
-import { Header } from "./components/header";
+
 import { ColorModeContextProvider } from "./contexts/color-mode";
+import { ThemedHeaderV2 } from "components/layout/header";
+import { ThemedSiderV2 } from "components/layout/sider";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((config) => {
@@ -181,7 +183,8 @@ function App() {
                         fallback={<CatchAllNavigate to="/login" />}
                       >
                         <ThemedLayoutV2
-                          Header={() => <Header isSticky={true} />}
+                          Header={() => <ThemedHeaderV2 isSticky={true} />}
+                          Sider={() => <ThemedSiderV2 />}
                         >
                           <Outlet />
                         </ThemedLayoutV2>
